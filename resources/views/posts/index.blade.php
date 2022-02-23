@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,68 +23,67 @@
         background-color: #e6ecf0;
         padding-top: 5px;
         }
+        a {
+          color: #1DA1F2;
+        }
+        
+        .tweet-list {
+          list-style: none;
+          margin: 8px 4px 0;
+          padding: 0;
+        }
+        .tweet-card {
+          background-color: #fff;
+          border-bottom: 1px solid #e6ecf0;
+          min-height: 52px;
+          padding: 9px 12px;
+        }
+        
+        .tweet-content {
+          margin-left: 58px;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: normal;
+        }
+        .tweet-card-avatar {
+          border-radius: 50%;
+          height: 48px;
+          width: 48px;
+          float: left;
+          margin-top: 3px;
+          margin-left: -58px;
+        }
+        
+        .tweet-footer-btn {
+          margin-right: 30px;
+        }
+        .tweet-footer-btn i, .tweet-footer-btn span {
+          color: #657786;
+          font-size: 16px;
+        }
+        .tweet-footer-btn span {
+          margin-left: 8px;
+        }
+        .navbar {
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        }
+        .navbar-nav > li a {
+          color: #66757f;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .navbar-search-icon {
+          color: #66757f;
+        }
 
-    a {
-      color: #1DA1F2;
-    }
-    
-    .tweet-list {
-      list-style: none;
-      margin: 8px 4px 0;
-      padding: 0;
-    }
-    .tweet-card {
-      background-color: #fff;
-      border-bottom: 1px solid #e6ecf0;
-      min-height: 52px;
-      padding: 9px 12px;
-    }
-    
-    .tweet-content {
-      margin-left: 58px;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: normal;
-    }
-    .tweet-card-avatar {
-      border-radius: 50%;
-      height: 48px;
-      width: 48px;
-      float: left;
-      margin-top: 3px;
-      margin-left: -58px;
-    }
-    
-    .tweet-footer-btn {
-      margin-right: 30px;
-    }
-    .tweet-footer-btn i, .tweet-footer-btn span {
-      color: #657786;
-      font-size: 16px;
-    }
-    .tweet-footer-btn span {
-      margin-left: 8px;
-    }
-    .navbar {
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-.navbar-nav > li a {
-  color: #66757f;
-  font-size: 14px;
-  font-weight: bold;
-}
-.navbar-search-icon {
-  color: #66757f;
-}
+        .navbar-form {
+          margin-right: 15px;
+        }
 
-.navbar-form {
-  margin-right: 15px;
-}
-
-.navbar-user-dropdown {
-  margin-right: 15px;
-}
+        .navbar-user-dropdown {
+          margin-right: 15px;
+        }
 </style>
 </head>
 <body>
@@ -134,13 +132,17 @@
               </div>
               <div class="tweet-footer">
                 <a class="tweet-footer-btn">
-                  <i class="octicon octicon-comment" aria-hidden="true"></i><span> 18</span>
+                  <i class="octicon octicon-comment" aria-hidden="true"></i><span>18</span>
                 </a>
                 <a class="tweet-footer-btn">
-                  <i class="octicon octicon-sync" aria-hidden="true"></i><span> 64</span>
+                  <i class="octicon octicon-sync" aria-hidden="true"></i><span>64</span>
                 </a>
+               {{--  <a class="tweet-footer-btn">
+                  <i class="octicon octicon-heart" aria-hidden="true"></i>
+                  <span></span>
+                </a> --}}
                 <a class="tweet-footer-btn">
-                  <i class="octicon octicon-heart" aria-hidden="true"></i><span> 202</span>
+                    @include('posts.like', ['model' => $post])
                 </a>
               </div>
             </div>

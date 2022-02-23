@@ -23,3 +23,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/posts', App\Http\Controllers\PostsController::class)->only(['index', 'store']);
 Route::resource('/users', App\Http\Controllers\UsersController::class)->only(['update', 'show']);
+
+Route::middleware('auth')->group(function () {
+    Route::post('like', [App\Http\Controllers\LikeController::class, 'like'])->name('like');
+    Route::delete('like', [App\Http\Controllers\LikeController::class, 'unlike'])->name('unlike');
+});
