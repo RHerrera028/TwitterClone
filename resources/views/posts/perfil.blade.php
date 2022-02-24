@@ -87,52 +87,12 @@
     </style>
 </head>
 <body>
-  {{-- @extends('layouts.app')
-
-  @section('content') --}}
   <h1 class="col-6" style="margin:auto">Posts de usuario</h1>
   <div class="col-6" style="margin:auto">
     <ol class="tweet-list">
     @if ($posts)
       @foreach ($posts as $post)
-        {!! Form::model(Auth::user(),['method' => 'GET', 'action'=>['App\Http\Controllers\UsersController@show', Auth::user()->id]]) !!}
-          {{ csrf_field() }}
-          <li class="tweet-card">
-            <div class="tweet-content">
-              <div class="tweet-header">
-                <span class="fullname">
-                  <strong>
-                    {{ $post->user->name }}
-                  </strong>
-                </span>
-                <span class="username"> 
-                  {{ $post->user->email }}
-                </span>
-                <span class="tweet-time">{{ $post->created_at->format('M d') }}
-                </span>
-              </div>
-                <a>
-                  <img class="tweet-card-avatar" src="/images/blank.jpg" alt="">
-                </a>
-              <div class="tweet-text">
-                <p class="" data-aria-label-part="0">                
-                  {{ $post->contenido }}
-                </p>
-              </div>
-              <div class="tweet-footer">
-                <a class="tweet-footer-btn">
-                  <i class="octicon octicon-comment" aria-hidden="true"></i><span> 18</span>
-                </a>
-                <a class="tweet-footer-btn">
-                  <i class="octicon octicon-sync" aria-hidden="true"></i><span> 64</span>
-                </a>
-                <a class="tweet-footer-btn">
-                  <i class="octicon octicon-heart" aria-hidden="true"></i><span> 202</span>
-                </a>
-              </div>
-            </div>
-          </li>
-        {!! Form::close() !!}
+        @include('posts.tweet')
       @endforeach
     @endif
     </ol>

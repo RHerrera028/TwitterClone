@@ -87,70 +87,24 @@
 </style>
 </head>
 <body>
-  @extends('layouts.app')
+@extends('layouts.app')
 
-  @section('content')
+@section('content')
 
-    @auth 
-    <!-- the user is authenticated --> 
-    @include('posts.create')
-    @endauth
+  @auth 
+  <!-- the user is authenticated --> 
+  @include('posts.create')
+  @endauth
 
-    <div class="col-6" style="margin:auto">
-        <ol class="tweet-list">
-		@if ($posts)
+  <div class="col-6" style="margin:auto">
+      <ol class="tweet-list">
+      @if ($posts)
         @foreach($posts as $post)
-          <li class="tweet-card">
-            <div class="tweet-content">
-              <div class="tweet-header">
-                <span class="fullname">
-                  <strong>
-                    {{ $post->user->name }}
-				  </strong>
-                </span>
-                <span class="username"> 
-                  {{ $post->user->email }}
-{{-- 
-				@foreach($users as $user)
-                    @if ($user->id==$post->user_id)
-                    {{$user->email}}
-                    @else
-                    
-                    @endif
-                @endforeach --}}
-				</span>
-                <span class="tweet-time">{{ $post->created_at->format('M d') }}
-				</span>
-              </div>
-              <a>
-                <img class="tweet-card-avatar" src="/images/blank.jpg" alt="">
-              </a>
-              <div class="tweet-text">
-                <p class="" data-aria-label-part="0">                
-			          	{{ $post->contenido }}
-                </p>
-              </div>
-              <div class="tweet-footer">
-                <a class="tweet-footer-btn">
-                  <i class="octicon octicon-comment" aria-hidden="true"></i><span>18</span>
-                </a>
-                <a class="tweet-footer-btn">
-                  <i class="octicon octicon-sync" aria-hidden="true"></i><span>64</span>
-                </a>
-               {{--  <a class="tweet-footer-btn">
-                  <i class="octicon octicon-heart" aria-hidden="true"></i>
-                  <span></span>
-                </a> --}}
-                <a class="tweet-footer-btn">
-                    @include('posts.like', ['model' => $post])
-                </a>
-              </div>
-            </div>
-          </li>
-		@endforeach
-        @endif
-		  </ol>
-		  </div>
+          @include('posts.tweet')
+        @endforeach
+      @endif
+    </ol>
+  </div>
 @endsection
 
 </body>

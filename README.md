@@ -3,3 +3,5 @@
 ## Twitter Clone
 
 Twitter clone with implemented Tweet button for registered users and Like button.
+
+A working profile too, with all the tweets made by the user.
